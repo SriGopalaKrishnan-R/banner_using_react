@@ -1,0 +1,159 @@
+/* Root Variables */
+:root {
+  --primary-color: #00ff00; /* Green for Banner */
+  --secondary-color: #f7f7f7; /* Light Gray */
+  --accent-color: #ff5722; /* Orange */
+  --text-color: #000000; /* Black for Description, Timer, and Link */
+  --background-color: #1c1c1e; /* Dark Blue Background */
+  --gradient-start: #1e3c72; /* Dark Blue */
+  --gradient-end: #2a5298; /* Light Blue */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --border-radius: 8px;
+  --padding: 16px;
+  --margin: 16px;
+  --max-width: 500px; /* Maximum width for the container */
+}
+
+/* Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: var(--text-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden; /* Prevent scrollbar due to background animation */
+}
+
+/* Background Animation */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--primary-color) 10%, transparent 10%),
+              radial-gradient(circle, var(--accent-color) 10%, transparent 10%);
+  background-size: 10% 10%;
+  animation: moveBackground 10s linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveBackground {
+  0% {
+      transform: translate(0, 0);
+  }
+  50% {
+      transform: translate(-25%, -25%);
+  }
+  100% {
+      transform: translate(0, 0);
+  }
+}
+
+/* Container */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--padding);
+  max-width: var(--max-width);
+  margin: 0 auto; /* Center the container */
+}
+
+/* Banner Container */
+.banner-container {
+  width: 100%;
+  max-width: var(--max-width); /* Ensure it matches the form width */
+  margin-bottom: var(--margin);
+}
+
+/* Banner Styles */
+.banner {
+  background-color: var(--primary-color); /* Green Background */
+  padding: var(--padding);
+  color: var(--text-color);
+  text-align: center;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Banner Text Styles */
+.banner p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-color); /* Black Text */
+}
+
+.banner a {
+  color: var(--text-color); /* Black Link */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.banner a:hover {
+  text-decoration: underline;
+}
+
+/* Dashboard Styles */
+form {
+  background-color: var(--secondary-color);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: var(--max-width);
+  width: 100%;
+}
+
+form div {
+  margin-bottom: var(--margin);
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+form input[type="text"],
+form input[type="url"],
+form input[type="number"] {
+  width: calc(100% - var(--padding));
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+form input[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .App {
+      padding: var(--padding);
+  }
+
+  form {
+      padding: var(--padding);
+  }
+}
